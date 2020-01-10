@@ -15,6 +15,9 @@
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -28,16 +31,16 @@
             </div>
         </nav>
         <div class="row justify-content-center" style="margin-top: 90px !important;">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-10">
                 {% if saved_file: %}
                 <div class="card blue hoverable">
-                    <div class="card-content white" style="height: 500px;">
+                    <pre class="card-content white plaintext">
                         {{ content }}
-                    </div>
+                    </pre>
                 </div>
                 {% else: %}
                 <div class="card blue hoverable">
-                    <div class="card-content white" style="height: 500px;">
+                    <div class="card-content">
                         <marquee>This file doesn't exists</marquee>
                     </div>
                 </div>
@@ -48,11 +51,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        var send = document.querySelector("#send");
-        var form1 = document.querySelector('#store_form');
-        send.addEventListener('click', function () {
-            form1.submit();
-        });
+    
     </script>
 </body>
 

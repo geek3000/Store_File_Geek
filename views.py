@@ -31,7 +31,7 @@ def index():
             return redirect('/')
         
         filename = secure_filename(txt_file.filename)
-        txt_file.save(app.config["UPLOAD_FOLDER"]+'/paetii'+str(id1))
+        txt_file.save(app.config["UPLOAD_FOLDER"]+'/paetii'+str(id1)+'.txt')
         db.session.add(Save_files(filename, id1))
         db.session.commit()
         return redirect('/')
@@ -45,7 +45,7 @@ def display(id1):
     content=""
     if not saved_file:
         return render_template('display.html')
-    with open(app.config["UPLOAD_FOLDER"]+'/paetii'+saved_file.id1) as f:
+    with open(app.config["UPLOAD_FOLDER"]+'/paetii'+saved_file.id1+'.txt') as f:
         content=f.read()
         
     return render_template('display.html', saved_file=saved_file, content=content)
