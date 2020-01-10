@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PasteGeek</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-expand-sm navbar-dark fixed-top bg-primary">
+            <div class="">
+                <a href="/" class="navbar-brand">
+                    <h4>StoreTXT@GEEK</h4>
+                </a>
+            </div>
+        </nav>
+        <div class="row" style="margin-top: 90px !important;">
+            <div class="col-sm-12 col-md-4">
+                <div class="card blue hoverable">
+                    <div class="card-content">
+                        <form method='POST' action='/' enctype='multipart/form-data' id='store_form'>
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file" name="file_txt">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col s12 m12">
+                            <a id="send" class="waves-effect waves-light yellow btn right"><i
+                                    class="material-icons">file_upload</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <div class="card blue">
+                    <div class="card-content">
+                        <div class="list-group">
+                            {% if saved_files: %}
+                            {% for saved_file in saved_files: %}
+                            <a href="/display/{{ saved_file.id1 }}"
+                                class="list-group-item list-group-item-action flex-column align-items-start active yellow hoverable">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ saved_file.file_name }}</h5>
+                                </div>
+                                <small class='right'>{{ saved_file.pubdate }}</small>
+                            </a>
+                            <hr class="mt-0 mb-4">
+                            {% endfor %}
+
+                            {% else %}
+                            <div class="card bg-primary justify-content-center" style="height: 100px;">
+                                <div class="">
+                                    <marquee><span class="text-center">You don't have any Stored file</span></marquee>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        var send = document.querySelector("#send");
+        var form1 = document.querySelector('#store_form');
+        send.addEventListener('click', function () {
+            form1.submit();
+        });
+    </script>
+</body>
+
+</html>
